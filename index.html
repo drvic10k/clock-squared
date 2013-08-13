@@ -21,9 +21,11 @@
             var timer1 = new Timer("timer1", 15, 2);
             var timer2 = new Timer("timer2", 15, 2, "blue");
 
-            var digit1 = new Digit("digit", 15, 0, 2, "red");
+            var digit1 = new Digit("digit1", 15, 0, 2, "red");
 
-            $("#input").change(function (e) {
+            $("#digit").change(function (e) {
+                digit1.speed = $("#speed").val() || 2;
+                digit1.color = $("#color").val() || "red";
                 digit1.SetDigit(e.target.value);
                 e.target.value = "";
 
@@ -69,11 +71,32 @@ The digits can be used individually for any purpose.
                 <canvas style="margin-bottom: 10px;" id="timer2" width="670" height="200"></canvas>
 
                 <p>You can try different digits with this input box</p>
-                <div style="margin-bottom: 30px;">
-                    <input size="3" id="input" />
-                </div>
                 <div>
-                    <canvas id="digit" width="135" height="200"></canvas>
+                    <div style="float: left;">
+                        <div style="margin-bottom: 10px;">
+                            Digit:
+                            <input type="text" size="5" id="digit" />
+
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            Color:
+                            <input type="text" size="5" id="color" />
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            Speed:
+                            <input type="text" size="5" id="speed" />
+                        </div>
+                    </div>
+
+                    <div style="float: right; margin-right: 350px;">
+                        <canvas id="digit1" width="135" height="200"></canvas>
+                    </div>
+                </div>
+                <div style="float: left;">
+                    <p>
+                        You could also change size of the clocks, but it might break the layout :)
+
+                    </p>
                 </div>
 
             </section>

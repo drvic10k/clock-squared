@@ -5,6 +5,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
 
     self.shade = shade;
     self.speed = speed;
+    self.color = color;
     self.Clocks = createArray(6, 4);
     self.$clock = $("#" + canvasId);
 
@@ -18,7 +19,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
 
         for (var j = 0; j < self.Clocks[i].length ; j++) {
 
-            var c = self.Clocks[i][j] = new Clock(canvasId, new Object({ x: radius + j * (2.2 * radius) + position * self.Width, y: radius + i * (2.2 * radius) }), radius, highlight, color);
+            var c = self.Clocks[i][j] = new Clock(canvasId, new Object({ x: radius + j * (2.2 * radius) + position * self.Width, y: radius + i * (2.2 * radius) }), radius, highlight, self.color);
             c.SetTime(0, 0);
             c.x = j;
             c.y = i;
@@ -45,7 +46,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "0":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  6, 00, 3, 30, 6, 45, 6, 00,
                                  6, 00, 6, 00, 6, 00, 6, 00,
                                  6, 00, 6, 00, 6, 00, 6, 00,
@@ -144,12 +145,12 @@ function Digit(canvasId, radius, position, speed, color, shade) {
             switch (i) {
 
                 case ":":
-                    matrix = [   0, 00, 0, 00, 0, 00, 0, 00,
+                    matrix = [0, 00, 0, 00, 0, 00, 0, 00,
                                  0, 00, 3, 30, 6, 45, 0, 00,
                                  0, 00, 0, 15, 9, 00, 0, 00,
                                  0, 00, 3, 30, 6, 45, 0, 00,
                                  0, 00, 0, 15, 9, 00, 0, 00,
-                                 0, 00, 0, 00, 0, 00, 0, 00 ];
+                                 0, 00, 0, 00, 0, 00, 0, 00];
                     break;
 
 
@@ -190,7 +191,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "4":
-                    matrix = [   3, 30, 6, 45, 3, 30, 6, 45,
+                    matrix = [3, 30, 6, 45, 3, 30, 6, 45,
                                  0, 30, 6, 00, 0, 30, 6, 00,
                                  0, 30, 3, 00, 0, 45, 6, 00,
                                  0, 15, 9, 15, 9, 30, 6, 00,
@@ -199,7 +200,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "5":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  0, 30, 6, 15, 9, 15, 9, 00,
                                  0, 30, 3, 00, 3, 45, 6, 45,
                                  0, 15, 9, 15, 9, 30, 6, 00,
@@ -208,7 +209,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "6":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  0, 30, 6, 15, 9, 15, 9, 00,
                                  0, 30, 3, 00, 3, 45, 6, 45,
                                  0, 30, 6, 15, 9, 30, 6, 00,
@@ -217,7 +218,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "7":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  0, 15, 9, 15, 9, 30, 6, 00,
                                  0, 00, 0, 00, 0, 30, 6, 00,
                                  0, 00, 0, 00, 0, 30, 6, 00,
@@ -226,7 +227,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "8":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  0, 30, 6, 15, 9, 30, 6, 00,
                                  0, 30, 3, 00, 0, 45, 6, 00,
                                  0, 30, 6, 15, 9, 30, 6, 00,
@@ -235,7 +236,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
                     break;
 
                 case "9":
-                    matrix = [   3, 30, 3, 45, 3, 45, 6, 45,
+                    matrix = [3, 30, 3, 45, 3, 45, 6, 45,
                                  0, 30, 6, 15, 9, 30, 6, 00,
                                  0, 30, 3, 00, 0, 45, 6, 00,
                                  0, 15, 9, 15, 9, 30, 6, 00,
@@ -254,7 +255,7 @@ function Digit(canvasId, radius, position, speed, color, shade) {
 
             for (var j = 0; j < self.Clocks[i].length ; j++) {
 
-                self.Clocks[i][j].AnimateTimeTo(matrix[index], matrix[index + 1], self.speed);
+                self.Clocks[i][j].AnimateTimeTo(matrix[index], matrix[index + 1], self.speed, self.color);
                 index += 2;
             }
 

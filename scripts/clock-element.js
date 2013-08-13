@@ -76,11 +76,12 @@ function Clock(canvasId, center, radius, highlighted, color) {
 
     };
 
-    self.AnimateTimeTo = function (hour, minute, speed) {
+    self.AnimateTimeTo = function (hour, minute, speed, color) {
 
         self.targetHours = hour;
         self.targetMinutes = minute;
         self.speed = speed;
+        self.color = color;
 
         if ((self.hours > hour) || (self.hours == hour && self.minutes > minute)) { self.past = true; }
 

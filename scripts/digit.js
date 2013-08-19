@@ -165,7 +165,7 @@ function Digit(canvasId, radius, position, speed, color) {
             return;
         }
 
-        self.Clocks[0][0].context.clearRect(self.Width * self.Position, 0, self.Width * (self.Position + 1), self.$clock.height());
+        self.Clocks[0][0].context.clearRect(self.Width * self.Position, 0, self.Width, self.$clock.height());
 
         for (var i = 0; i < self.Clocks.length; i++) {
 
